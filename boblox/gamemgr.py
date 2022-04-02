@@ -12,6 +12,7 @@ game_db = {
     , 'Hole.IO': 'https://www.hole-io.com'
     , 'Agar.IO': 'https://www.agar.io'
     , '1v1.lol': 'https://www.1v1.lol'
+    , 'github': 'https://github.com'
     , 'Cookie Clicker': 'http://orteil.dashnet.org/cookieclicker'
 }
 
