@@ -3,6 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
 from sys import argv
+import random
 
 game_db = {
      'Slither.IO': 'https://www.slither.io'
@@ -12,12 +13,25 @@ game_db = {
     , 'Hole.IO': 'https://www.hole-io.com'
     , 'Agar.IO': 'https://www.agar.io'
     , '1v1.lol': 'https://www.1v1.lol'
-    , 'Cookie Clicker': 'http://orteil.dashnet.org/cookieclicker'
+    , 'Cookie Clicker': 'https://orteil.dashnet.org/cookieclicker'
+    , 'Google Snake': 'https://www.google.com/fbx?fbx=snake_arcade'
+    , 'Google Maps Snake': 'https://snake.googlemaps.com/'
 }
+
+# game_db['random'] = random.choice(list(game_db.items()))[1]
+
+#game_db = random.choices(list(game_db.keys()))
+
 
 app = QApplication(argv)
 
-def request_gamemgr(site):
+def get_choices():
+    return list(game_db.keys()) + ['Close Boblox']
+
+def run(choice):
+    if choice == 'Close Boblox' or choice not in game_db: 
+        quit()
+    site = game_db[choice]
     gamemgr = QWebEngineView()
     gamemgr.setWindowTitle('Boblox')
     gamemgr.load(QUrl(site))
