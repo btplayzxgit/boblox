@@ -16,17 +16,21 @@ game_db = {
     , 'Cookie Clicker': 'https://orteil.dashnet.org/cookieclicker'
     , 'Google Snake': 'https://www.google.com/fbx?fbx=snake_arcade'
     , 'Google Maps Snake': 'https://snake.googlemaps.com/'
+    , 'DigDig.IO': 'https://www.digdig.io'
 }
-
-# game_db['random'] = random.choice(list(game_db.items()))[1]
-
-#game_db = random.choices(list(game_db.keys()))
-
 
 app = QApplication(argv)
 
 def get_choices():
-    return list(game_db.keys()) + ['Close Boblox']
+    choices_randomized = []
+    take_choices = list(game_db.keys())
+    for x in list(game_db.keys()):
+        choice = random.choice(take_choices)
+        take_choices.remove(choice)
+        choices_randomized.append(choice)
+        
+    del x
+    return choices_randomized + ['Close Boblox']
 
 def run(choice):
     if choice == 'Close Boblox' or choice not in game_db: 
