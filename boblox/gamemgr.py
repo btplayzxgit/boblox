@@ -17,6 +17,7 @@ game_db = {
     , 'Google Snake': 'https://www.google.com/fbx?fbx=snake_arcade'
     , 'Google Maps Snake': 'https://snake.googlemaps.com/'
     , 'DigDig.IO': 'https://www.digdig.io'
+    , 'Google Maps': 'https://www.google.com/maps/'
 }
 
 app = QApplication(argv)
