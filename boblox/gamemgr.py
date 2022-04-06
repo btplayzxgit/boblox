@@ -18,6 +18,8 @@ game_db = {
     , 'Google Maps Snake': 'https://snake.googlemaps.com/'
     , 'DigDig.IO': 'https://www.digdig.io'
     , 'Google Maps': 'https://www.google.com/maps/'
+    , 'Wormate.IO': 'https://www.wormate.io'
+    , 'FlyUFO.IO': 'https://www.flyufo.io'
 }
 
 app = QApplication(argv)
