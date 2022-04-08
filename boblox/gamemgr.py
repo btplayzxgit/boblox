@@ -20,6 +20,7 @@ game_db = {
     , 'Google Maps': 'https://www.google.com/maps/'
     , 'Wormate.IO': 'https://www.wormate.io'
     , 'FlyUFO.IO': 'https://www.flyufo.io'
+    , 'Tunnel Rush': 'https://tunnelrush.github.io'
 }
 
 app = QApplication(argv)
