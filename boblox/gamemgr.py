@@ -4,6 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
 from sys import argv
 import random
+import requests
 
 game_db = {
      'Slither.IO': 'https://www.slither.io'
@@ -13,7 +14,7 @@ game_db = {
     , 'Hole.IO': 'https://www.hole-io.com'
     , 'Agar.IO': 'https://www.agar.io'
     , '1v1.lol': 'https://www.1v1.lol'
-    , 'Cookie Clicker': 'https://orteil.dashnet.org/cookieclicker'
+    , 'Cookie Clicker': 'https://trixter9994.github.io/Cookie-Clicker-Source-Code/'
     , 'Google Snake': 'https://www.google.com/fbx?fbx=snake_arcade'
     , 'Google Maps Snake': 'https://snake.googlemaps.com/'
     , 'DigDig.IO': 'https://www.digdig.io'
