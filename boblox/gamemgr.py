@@ -4,7 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
 from sys import argv
 import random
-import requests
+import turtle
 
 game_db = {
      'Slither.IO': 'https://www.slither.io'
@@ -43,6 +43,8 @@ def run(choice):
     site = game_db[choice]
     gamemgr = QWebEngineView()
     gamemgr.setWindowTitle('Boblox')
+    gamemgr.setGeometry(20, 50, 800, 700)
+    gamemgr.setWindowIcon(QIcon('boblox\\icon.png'))
     gamemgr.load(QUrl(site))
     gamemgr.show()
     app.exec_()

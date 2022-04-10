@@ -6,6 +6,7 @@ begin_installation()
 
 import pyautogui
 
+
 run_account_check()
 
 username = open('boblox\\account\\username').read()
