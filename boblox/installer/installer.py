@@ -11,5 +11,6 @@ def begin_installation():
     os.system('pip install PyQtWebEngine')
     os.system('pip install pyautogui')
     os.system('pip install adblockparser')
+    os.system('pip install psutil')
 
     turtle.bye()

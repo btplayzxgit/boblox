@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Boblox",
+            "name": "Debug Boblox",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/Boblox.py",

@@ -10,8 +10,6 @@ def run_account_check():
             username_file = open('boblox\\account\\username', 'w')
             create_username = send_username.get()
             username_file.write(create_username)
-            
-
             pyautogui.alert(title='Boblox', text='Account Created\nClick the button and restart Boblox', button='Exit')
             exit()
 
@@ -20,7 +18,7 @@ def run_account_check():
         screen.title('Boblox')
         Label(text='Boblox', bg='yellow', width='300', height='4', font=('Arial', 30)).pack()
         Label(text='').pack()
-        Label(text='Welcome to Boblox!', bg='blue', font=('Arial', 13)).pack()
+        Label(text='Welcome to Boblox!', bg='blue', font=('Cosmic Sans', 13)).pack()
 
         global send_username
         send_username = StringVar()
