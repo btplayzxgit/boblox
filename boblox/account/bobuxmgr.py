@@ -1,15 +1,11 @@
 import pyautogui
 from boblox.account.bobux import bobux
 
-def edit_bobux(bobux_amount): open('boblox\\account\\bobux.py', 'w').write('bobux=' + str(bobux_amount))
-
-def bobux_amount(): return bobux
-
-
+def edit_bobux(bobux_amount):
+    open('boblox\\account\\bobux.py', 'w').write('bobux=' + str(bobux_amount)); global bobux; bobux = bobux_amount
 
 def add_to_bobux(amount):
-    to_give = str(bobux + amount)
-    edit_bobux(to_give)
+    edit_bobux(bobux + int(amount))
 
 def purchase(item_name, cost):
     if bobux - cost < 0: pyautogui.alert(title='Boblox', text='You do not have enough bobux to purchase this item', button='Alright')
