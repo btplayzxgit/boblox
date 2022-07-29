@@ -42,7 +42,6 @@ experience_db = {
     , 'Five nights at freddys': 'https://fnafunblocked.fun/'
     , 'Among us': 'https://amongusplay.online/'
     , '1 dimension game': 'https://mashpoe.github.io/1D-Game'
-    , 'Wheel of names': 'https://wheelofnames.com/'
     , 'Pie.ai': 'https://pie.ai/'
     , 'Moonlander': 'http://moonlander.seb.ly/'
     , 'Mine-craft.io': 'https://mine-craft.io/'
@@ -50,6 +49,9 @@ experience_db = {
     , 'Litemint.io': 'https://litemint.io'
     , '2048': 'https://2048.org/'
     , 'Wordle': 'https://wordleplay.com/'
+    , 'Amogus.fun': 'https://amogus.fun/'
+    , 'Battlefields.io': 'https://battlefields.io'
+    , 'Roblox': 'https://now.gg/play/roblox-corporation/5349/roblox/?utm_campaign=navigation&utm_medium=main-site&utm_source=now.gg&referrer=https%3A%2F%2Fnow.gg%2Fapps%2Froblox-corporation%2F5349%2Froblox.html&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiIwMUZQQ0hCTktLQkVWVFRNTTlNSkpDWkJHRiIsInVzZXJJZCI6IjAxRlBDSEJHNjhIRkdOOFkzQUhWQVQ5UDE3IiwiaHYiOmZhbHNlLCJwYWNrYWdlTmFtZSI6ImNvbS5yb2Jsb3guY2xpZW5'
 }
 
 def tryFindUrl(choice):
@@ -110,10 +112,12 @@ def run(choice):
             elif confirm_play == 'No, don\'t start the experience': del confirm_play, cpu; quit()
         else:
             pass
-
-        with open('boblox\\block') as f:
-            raw_rules = f.readlines()
-            rules = AdblockRules(raw_rules)
+        try:
+            with open('boblox\\block') as f:
+                raw_rules = f.readlines()
+                rules = AdblockRules(raw_rules)
+        except:
+            pyautogui.alert(title='Boblox', text='Error\nX_X\nBlocker was not found.', button='Quit'); quit()
         class WebEngineUrlInterceptor(QWebEngineUrlRequestInterceptor):
             def interceptRequest(self, info):
                 url = info.requestUrl().toString()

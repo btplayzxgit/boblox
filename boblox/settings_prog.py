@@ -16,8 +16,6 @@ def open_settings():
 
     elif settings_option == 'Reset Account':
         open('boblox\\account\\username', 'w').write('')
-        open('boblox\\account\\bobux', 'w').write('bobux=0')
-        open('boblox\\account\\purchases', 'w').write('')
         pyautogui.alert(title='Boblox', text='Account Reset. Boblox will now close.', button='Okay')
         del settings_option
         quit()

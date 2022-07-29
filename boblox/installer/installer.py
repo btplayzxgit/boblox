@@ -12,5 +12,6 @@ def begin_installation():
     os.system('pip install pyautogui')
     os.system('pip install adblockparser')
     os.system('pip install psutil')
+    os.system('pip install requests')
 
     turtle.bye()
