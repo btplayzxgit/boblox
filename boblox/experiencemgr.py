@@ -24,7 +24,7 @@ experience_db = {
     , 'Google maps snake': 'https://snake.googlemaps.com/'
     , 'Digdig.io': 'https://www.digdig.io'
     , 'Wormate.io': 'https://www.wormate.io'
-    , 'FlyUFO.io': 'https://www.flyufo.io'
+    , 'Flyufo.io': 'https://www.flyufo.io'
     , 'Tunnel rush': 'https://tunnelrush.github.io'
     , 'Flappy bird': 'https://flappybird.io/'
     , 'Diep.io': 'https://www.diep.io'
