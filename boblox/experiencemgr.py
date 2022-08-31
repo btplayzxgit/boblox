@@ -51,7 +51,7 @@ experience_db = {
     , 'Wordle': 'https://wordleplay.com/'
     , 'Amogus.fun': 'https://amogus.fun/'
     , 'Battlefields.io': 'https://battlefields.io'
-    , 'Roblox': 'https://now.gg/play/roblox-corporation/5349/roblox/?utm_campaign=navigation&utm_medium=main-site&utm_source=now.gg&referrer=https%3A%2F%2Fnow.gg%2Fapps%2Froblox-corporation%2F5349%2Froblox.html&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiIwMUZQQ0hCTktLQkVWVFRNTTlNSkpDWkJHRiIsInVzZXJJZCI6IjAxRlBDSEJHNjhIRkdOOFkzQUhWQVQ5UDE3IiwiaHYiOmZhbHNlLCJwYWNrYWdlTmFtZSI6ImNvbS5yb2Jsb3guY2xpZW5'
+    , 'Roblox': 'https://now.gg/play/roblox-corporation/5349/roblox'
 }
 
 def tryFindUrl(choice):
@@ -122,11 +122,12 @@ def run(choice):
             def interceptRequest(self, info):
                 url = info.requestUrl().toString()
                 if rules.should_block(url):
-                    for z in range(50): info.block(True)
+                    info.block(True)
+                    if url == 'https://now.gg/': info.block(True)
                     print('Boblox has blocked this ad or website address: {}'.format(url))
-                    del url, z
+                    del url
         interceptor = WebEngineUrlInterceptor()
-        QWebEngineProfile.defaultProfile().setRequestInterceptor(interceptor)
+        QWebEngineProfile.defaultProfile().setUrlRequestInterceptor(interceptor)
         sleep(0.5)
         experiencemgr.load(QUrl(site))
         experiencemgr.show()
