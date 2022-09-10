@@ -17,5 +17,6 @@ def begin_installation():
     os.system('pip install pillow')
     os.system('pip install pyglet')
     os.system('pip install numpy')
+    os.system('pip install beautifulsoup4')
 
     turtle.bye()

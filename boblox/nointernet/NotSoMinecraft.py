@@ -208,6 +208,7 @@ def start():
                     if (h < 18):
                         self.add_block((x, h, z), SAND, immediate=False)
                     if biom == 'grassland': self.add_block((x, h, z), GRASS, immediate=False)
+
                     else: self.add_block((x, h, z), SAND, immediate=False)
                     for y in xrange(h - 1, 0, -1):
                         if y == 9:
@@ -218,8 +219,13 @@ def start():
                             self.add_block((x, y, z), random.choice([STONE, STONE, STONE, STONE, STONE, STONE, COBBLESTONE, STONE, GOLD, STONE, DIAMOND, STONE, STONE, STONE]), immediate=False)
                         elif y == 1:
                             self.add_block((x, y, z), BEDROCK, immediate=False)
+                        
+                        
+                        
+
                         else:
                             self.add_block((x, y, z), random.choice([STONE, STONE, STONE, STONE, STONE, COBBLESTONE, STONE, STONE, STONE, STONE, STONE]), immediate=False)
+                        
                     if biom != 'dessert':
                         if (h > 20):
                             if random.randrange(0, 1000) > 990:

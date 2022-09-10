@@ -42,7 +42,7 @@ experience_db = {
     , 'Five nights at freddys': 'https://fnafunblocked.fun/'
     , 'Among us': 'https://amongusplay.online/'
     , '1 dimension game': 'https://mashpoe.github.io/1D-Game'
-    , 'Pie.ai': 'https://pie.ai/'
+    , 'Pie.ai': 'https://pie.ai'
     , 'Moonlander': 'http://moonlander.seb.ly/'
     , 'Mine-craft.io': 'https://mine-craft.io/'
     , 'Smash the walls': 'https://smashthewalls.com/'
@@ -52,6 +52,7 @@ experience_db = {
     , 'Amogus.fun': 'https://amogus.fun/'
     , 'Battlefields.io': 'https://battlefields.io'
     , 'Roblox': 'https://now.gg/play/roblox-corporation/5349/roblox'
+    , 'Aquapark.io': 'https://aquapark.io/'
 }
 
 def tryFindUrl(choice):
@@ -86,7 +87,8 @@ def run(choice):
     elif choice.capitalize() in experience_db:
         site = tryFindUrl(choice)
 
-        pyautogui.alert(title='Boblox', text=f'{choice.capitalize()}\n\n\nExperience Link: {site}', button='PLAY')
+        pyautogui.alert(title='Boblox', text=f'{choice.capitalize()}\n\n\nExperience URL: {site}', button='PLAY')
+                
         experiencemgr = QWebEngineView()
         experiencemgr.setWindowTitle('Boblox')
         experiencemgr.setGeometry(20, 50, 800, 700)
@@ -124,6 +126,8 @@ def run(choice):
                 if rules.should_block(url):
                     info.block(True)
                     if url == 'https://now.gg/': info.block(True)
+                    if url in 'https://now.gg/play/':
+                        if 'roblox' not in url: info.block(True)
                     print('Boblox has blocked this ad or website address: {}'.format(url))
                     del url
         interceptor = WebEngineUrlInterceptor()

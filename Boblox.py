@@ -11,4 +11,4 @@ from boblox.home_scr.home import home
 from boblox.wifi_check import internet
 
 while True:
-    if internet(): home()
+    if internet(): home()  
