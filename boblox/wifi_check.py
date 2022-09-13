@@ -2,7 +2,7 @@ import socket
 import pyautogui
 from boblox.nointernet.NotSoMinecraft import start
 
-url = 'https://www.google.com'
+url = 'www.google.com'
 
 
 def internet():

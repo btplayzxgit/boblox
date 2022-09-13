@@ -1,5 +1,5 @@
 import pyautogui
-from boblox.experiencemgr import get_choices, run
+from boblox.gamemgr import get_choices, run
 from random import choice
 
 def begin_search_gui():

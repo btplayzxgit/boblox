@@ -11,7 +11,7 @@ from time import sleep
 from adblockparser import AdblockRules
 from psutil import cpu_percent
 
-experience_db = {
+game_db = {
       'Slither.io': 'https://slither.io/'
     , 'Paper.io': 'https://paper-io.com/'
     , 'Minecraft classic': 'https://classic.minecraft.net' 
@@ -58,9 +58,9 @@ experience_db = {
 def tryFindUrl(choice):
     val = (choice if choice else '').lower()
 
-    for k in experience_db:
+    for k in game_db:
         if k.lower() == val:
-            return experience_db[k]
+            return game_db[k]
     
     del k, val
     return ''
@@ -69,7 +69,7 @@ app = QApplication(argv)
 
 def get_choices():
     choices_randomized = []
-    take_choices = list(experience_db.keys())
+    take_choices = list(game_db.keys())
     for x in range(16):
         choice = random.choice(take_choices)
         take_choices.remove(choice)
@@ -84,15 +84,15 @@ def get_choices():
 
 def run(choice):
     if choice == None: pass
-    elif choice.capitalize() in experience_db:
-        site = tryFindUrl(choice)
+    elif choice.capitalize() in game_db:
+        game = tryFindUrl(choice)
 
-        pyautogui.alert(title='Boblox', text=f'{choice.capitalize()}\n\n\nExperience URL: {site}', button='PLAY')
+        pyautogui.alert(title='Boblox', text=f'{choice.capitalize()}\n\n\nGame URL: {game}', button='PLAY')
                 
-        experiencemgr = QWebEngineView()
-        experiencemgr.setWindowTitle('Boblox')
-        experiencemgr.setGeometry(20, 50, 800, 700)
-        experiencemgr.setWindowIcon(QIcon('boblox\\icon.png'))
+        gamemgr = QWebEngineView()
+        gamemgr.setWindowTitle('Boblox')
+        gamemgr.setGeometry(20, 50, 800, 700)
+        gamemgr.setWindowIcon(QIcon('boblox\\icon.png'))
         
         try:
             turtle.title('Boblox')
@@ -106,12 +106,12 @@ def run(choice):
         turtle.pencolor('white')
         turtle.write(choice.capitalize(), align='center', font=('Open Sans', 35, 'bold'))
         turtle.goto(0, -40)
-        turtle.write('Loading experience...', align='center', font=('Open Sans', 15, 'normal'))
+        turtle.write('Loading game...', align='center', font=('Open Sans', 15, 'normal'))
         cpu = int(cpu_percent())
         if cpu > 79: 
-            confirm_play = pyautogui.confirm(title='Boblox', text='Your CPU usage is very high.\nThis experience may be slow.\nAre you sure you want to play?\nWARNING: If you click "No, don\'t start the experience", then Boblox will close.', buttons=['Yes, start the experience', 'No, don\'t start the experience'])
-            if confirm_play == 'Yes, start the experience': del confirm_play, cpu
-            elif confirm_play == 'No, don\'t start the experience': del confirm_play, cpu; quit()
+            confirm_play = pyautogui.confirm(title='Boblox', text='Your CPU usage is very high.\nThis game may be slow.\nAre you sure you want to play?\nWARNING: If you click "No, don\'t start the game", then Boblox will close.', buttons=['Yes, start the game', 'No, don\'t start the game'])
+            if confirm_play == 'Yes, start the game': del confirm_play, cpu
+            elif confirm_play == 'No, don\'t start the game': del confirm_play, cpu; quit()
         else:
             pass
         try:
@@ -133,10 +133,10 @@ def run(choice):
         interceptor = WebEngineUrlInterceptor()
         QWebEngineProfile.defaultProfile().setUrlRequestInterceptor(interceptor)
         sleep(0.5)
-        experiencemgr.load(QUrl(site))
-        experiencemgr.show()
+        gamemgr.load(QUrl(game))
+        gamemgr.show()
         turtle.bye()
         app.exec_()
-        del choice, site, experiencemgr, interceptor, raw_rules, rules
-    elif choice.capitalize() not in experience_db:
+        del choice, game, gamemgr, interceptor, raw_rules, rules
+    elif choice.capitalize() not in game_db:
         pyautogui.alert(title='Boblox', text=f'No results found for {choice}', button='Okay')
