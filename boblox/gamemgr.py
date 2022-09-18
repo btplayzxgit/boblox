@@ -128,6 +128,7 @@ def run(choice):
                     if url == 'https://now.gg/': info.block(True)
                     if url in 'https://now.gg/play/':
                         if 'roblox' not in url: info.block(True)
+                    if url == 'https://www.crazygames.com/': info.block(True)
                     print('Boblox has blocked this ad or website address: {}'.format(url))
                     del url
         interceptor = WebEngineUrlInterceptor()

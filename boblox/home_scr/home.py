@@ -7,6 +7,7 @@ import turtle
 from random import randint
 from time import sleep
 import pyautogui
+from ast import literal_eval
 
 
 def home():
@@ -17,20 +18,29 @@ def home():
 
     canvas = Canvas(root)
     canvas.pack(fill=BOTH, expand=TRUE)
-
-
   
 
     buttons_dir = 'boblox\\home_scr\\buttons\\'
     w = 488 - 55
     h = 140 - 48
 
+
+    bobux = literal_eval(open('boblox\\bux\\bobux', 'r').read())
+    bobux_dict = bobux
+    bobux = int(bobux['bobux'])
+
+    bobux_text = Label(canvas, text='\n\n\n\n\n\n                                                                                                                                                                                                                                                                                                                                                           '+str(bobux))
+    bobux_text.grid(row=0, column=0)
+
+
     btn_games = Image.open(buttons_dir + 'games_button.png')
     btn_game_search = Image.open(buttons_dir + 'game_search_button.png')
     btn_settings = Image.open(buttons_dir + 'settings_button.png')
     btn_close = Image.open(buttons_dir + 'close_boblox_button.png')
 
+    bobux_icon = Image.open('boblox\\bobux_icon.png')
     boblox_label = Image.open('boblox\\home_scr\\boblox_label.png')
+
     def photoimg(img): return ImageTk.PhotoImage(img)
     root.btn_games = photoimg(btn_games)
     root.btn_game_search = photoimg(btn_game_search)
@@ -38,6 +48,8 @@ def home():
     root.btn_close = photoimg(btn_close)
 
     root.boblox_label = photoimg(boblox_label)
+    root.bobux_icon = photoimg(bobux_icon)
+
     def place_button(btn_x, btn_y, btn): canvas.create_window(btn_x, btn_y, window=btn)
     def destroy(): root.destroy()
 
@@ -53,13 +65,29 @@ def home():
 
 
     boblox_label = Button(root, image=root.boblox_label, width=w-37, height=h*2-16, bd=0, relief='sunken')
+    bobux_icon = Button(root, image=root.bobux_icon, width=111, height=71, bd=0, relief='sunken')
+
+
+    
 
     place_button(600, 100, boblox_label)
+    place_button(930-int(len(str(bobux*3))), 100, bobux_icon)
+    
 
     place_button(600, 250, games_button)
     place_button(600, 380, game_search_button)
     place_button(600, 510, settings_button)
     place_button(600, 650, close_button)
+
+
+
+
+
+
+    
+
+    
+    
 
     
 
