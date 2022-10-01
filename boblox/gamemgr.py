@@ -51,8 +51,17 @@ game_db = {
     , 'Wordle': 'https://wordleplay.com/'
     , 'Amogus.fun': 'https://amogus.fun/'
     , 'Battlefields.io': 'https://battlefields.io'
-    , 'Roblox': 'https://now.gg/play/roblox-corporation/5349/roblox'
+    , 'Roblox': 'https://v3.now.gg/play/5349'
     , 'Aquapark.io': 'https://aquapark.io/'
+    , 'Perlin noise world': 'https://turbowarp.org/649460196/fullscreen'
+    , 'Geometry dash corrupted edition': 'https://turbowarp.org/707604214/fullscreen'
+    , 'Paper minecraft': 'https://turbowarp.org/10128407/fullscreen'
+    , 'Osu!': 'https://turbowarp.org/613688710/fullscreen'
+    , 'Portal': 'https://turbowarp.org/124823106/fullscreen'
+    , 'Taco simulator': 'https://turbowarp.org/658514076/fullscreen'
+    , 'Crystal seeker': 'https://turbowarp.org/463553665/fullscreen'
+    , 'Flexing simulator': 'https://turbowarp.org/739655886/fullscreen'
+    , 'Terraria': 'https://turbowarp.org/622435399/fullscreen'
 }
 
 def tryFindUrl(choice):
@@ -88,11 +97,6 @@ def run(choice):
         game = tryFindUrl(choice)
 
         pyautogui.alert(title='Boblox', text=f'{choice.capitalize()}\n\n\nGame URL: {game}', button='PLAY')
-                
-        gamemgr = QWebEngineView()
-        gamemgr.setWindowTitle('Boblox')
-        gamemgr.setGeometry(20, 50, 800, 700)
-        gamemgr.setWindowIcon(QIcon('boblox\\icon.png'))
         
         try:
             turtle.title('Boblox')
@@ -123,21 +127,76 @@ def run(choice):
         class WebEngineUrlInterceptor(QWebEngineUrlRequestInterceptor):
             def interceptRequest(self, info):
                 url = info.requestUrl().toString()
+                dont_intercept = [
+                    'https://turbowarp.org/favicon.ico'
+                    , game
+                    , 'https://turbowarp.org/static'
+                ]
+                if 'https://trampoline.turbowarp.org/avatars' in url: app.closeAllWindows(); pyautogui.alert(title='Boblox', text='There was an error from executing the button you pressed. Click the button to close the application.', button='Close app'); quit()
+                
+                if 'scratch' in url:
+                        print('SCRATCH RESPONSE: '+url)
+                if 'turbowarp' in url:
+                        print('TURBOWARP RESPONSE: '+url)
+                if 'https://turbowarp.org/' in url:
+                    if 'fullscreen' in url:
+                        print('! Block refused ! {}'.format(url))
+                    else:
+                        if url not in dont_intercept:
+                            if 'https://turbowarp.org/static' not in url:
+                                if 'https://turbowarp.org/js' not in url:
+                                    print('! Block intercepted !    {}'.format(url))
+                                    info.block(True)
+                        else:
+                            pass
                 if rules.should_block(url):
                     info.block(True)
                     if url == 'https://now.gg/': info.block(True)
                     if url in 'https://now.gg/play/':
                         if 'roblox' not in url: info.block(True)
-                    if url == 'https://www.crazygames.com/': info.block(True)
+                    if url == 'https://www.crazygames.com': info.block(True)
                     print('Boblox has blocked this ad or website address: {}'.format(url))
+                    
                     del url
         interceptor = WebEngineUrlInterceptor()
         QWebEngineProfile.defaultProfile().setUrlRequestInterceptor(interceptor)
         sleep(0.5)
-        gamemgr.load(QUrl(game))
-        gamemgr.show()
+        class MyWebBrowser(QMainWindow):
+            def __init__(self, *args, **kwargs):
+                super(MyWebBrowser, self).__init__(*args, **kwargs)
+
+                self.window = QWidget()
+                self.window.setWindowTitle('Boblox')
+                self.window.setWindowIcon(QIcon('boblox\\icon.png'))
+                self.window.setGeometry(20, 50, 800, 700)
+                
+
+                self.layout = QVBoxLayout()
+                self.horizontal = QHBoxLayout()
+
+                self.go_btn = QPushButton('Leave game')
+                self.go_btn.setMinimumHeight(30)
+
+                self.horizontal.addWidget(self.go_btn)
+
+                self.browser = QWebEngineView()
+
+                self.go_btn.clicked.connect(lambda: app.closeAllWindows())
+
+                self.layout.addLayout(self.horizontal)
+                self.layout.addWidget(self.browser)
+
+                self.browser.setUrl(QUrl(game))
+
+                self.window.setLayout(self.layout)
+                self.window.show()
+            def navigate(self, url):
+                self.browser.setUrl(QUrl(url))
         turtle.bye()
+
+        app = QApplication([])
+        window = MyWebBrowser()
         app.exec_()
-        del choice, game, gamemgr, interceptor, raw_rules, rules
+        del choice, game, interceptor, raw_rules, rules
     elif choice.capitalize() not in game_db:
         pyautogui.alert(title='Boblox', text=f'No results found for {choice}', button='Okay')
