@@ -62,6 +62,8 @@ game_db = {
     , 'Crystal seeker': 'https://turbowarp.org/463553665/fullscreen'
     , 'Flexing simulator': 'https://turbowarp.org/739655886/fullscreen'
     , 'Terraria': 'https://turbowarp.org/622435399/fullscreen'
+    , 'Minecraft scratch edition': 'https://turbowarp.org/540201650/fullscreen'
+    , 'Rawblocks': 'https://turbowarp.org/745289690/fullscreen'
 }
 
 def tryFindUrl(choice):
