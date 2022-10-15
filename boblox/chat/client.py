@@ -62,30 +62,30 @@ def connect_client(ip):
             self.ip_text = tkinter.Label(self.canvas, text='                                                                                                                                                                                                                                                                                                                                                  '+'Server ID: {}'.format(encrypt(ip)))
             self.ip_text.grid(row=0, column=0)
 
-            def setup_vc_gui(self):
-                def photoimg(img): return ImageTk.PhotoImage(img)
-                def place_button(btn_x, btn_y, btn): self.canvas.create_window(btn_x, btn_y, window=btn)
-                self.vc_on = 'boblox\\chat\\vcon.png'
-                self.vc_off = 'boblox\\chat\\vcoff.png'
+            # def setup_vc_gui(self):
+            #     def photoimg(img): return ImageTk.PhotoImage(img)
+            #     def place_button(btn_x, btn_y, btn): self.canvas.create_window(btn_x, btn_y, window=btn)
+            #     self.vc_on = 'boblox\\chat\\vcon.png'
+            #     self.vc_off = 'boblox\\chat\\vcoff.png'
 
-                self.vc_mode = self.vc_off
-                self.vc_btn = Image.open(self.vc_mode)
-                self.win.vc_button = photoimg(self.vc_btn)
-                self.vc_button = Button(self.win, image=self.win.vc_button, width=202, height=182)
-                place_button(930, 210, self.vc_button)
+            #     self.vc_mode = self.vc_off
+            #     self.vc_btn = Image.open(self.vc_mode)
+            #     self.win.vc_button = photoimg(self.vc_btn)
+            #     self.vc_button = Button(self.win, image=self.win.vc_button, width=202, height=182)
+            #     place_button(930, 210, self.vc_button)
 
 
 
-                def change_vc_mode(self):
-                    if self.vc_mode == self.vc_on:
-                        self.vc_mode = self.vc_off
-                    elif self.vc_mode == self.vc_off:
-                        self.vc_mode = self.vc_on
-                    self.vc_button
-                    setup_vc_gui()
+            #     def change_vc_mode(self):
+            #         if self.vc_mode == self.vc_on:
+            #             self.vc_mode = self.vc_off
+            #         elif self.vc_mode == self.vc_off:
+            #             self.vc_mode = self.vc_on
+            #         self.vc_button
+            #         setup_vc_gui()
 
                 
-            self.setup_vc_gui()
+            # self.setup_vc_gui()
 
             self.gui_done = True
 
