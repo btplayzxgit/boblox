@@ -22,7 +22,7 @@ def choose():
     def photoimg(img): return ImageTk.PhotoImage(img)
     def place_button(btn_x, btn_y, btn): canvas.create_window(btn_x, btn_y, window=btn)
     def create_server():
-        time.sleep(0.1)
+        time.sleep(0.3)
         root.destroy()
         global ip
         ip = gethostbyname(gethostname())
@@ -31,7 +31,7 @@ def choose():
         server_thread.start()
         self_client_thread.start()
     def connect():
-        time.sleep(0.1)
+        time.sleep(0.3)
         ip = input_ip_area.get('1.0', 'end')
         input_ip_area.delete('1.0', 'end')
         try:

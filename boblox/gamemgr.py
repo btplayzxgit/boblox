@@ -7,7 +7,7 @@ from sys import argv
 import random
 import pyautogui
 import turtle
-from time import sleep
+from boblox.gamemgr6 import get_choices2
 from adblockparser import AdblockRules
 from psutil import cpu_percent
 
@@ -51,7 +51,6 @@ game_db = {
     , 'Wordle': 'https://wordleplay.com/'
     , 'Amogus.fun': 'https://amogus.fun/'
     , 'Battlefields.io': 'https://battlefields.io'
-    , 'Roblox': 'https://v3.now.gg/play/5349'
     , 'Aquapark.io': 'https://aquapark.io/'
     , 'Perlin noise world': 'https://turbowarp.org/649460196/fullscreen'
     , 'Geometry dash corrupted edition': 'https://turbowarp.org/707604214/fullscreen'
@@ -64,6 +63,8 @@ game_db = {
     , 'Terraria': 'https://turbowarp.org/622435399/fullscreen'
     , 'Minecraft scratch edition': 'https://turbowarp.org/540201650/fullscreen'
     , 'Rawblocks': 'https://turbowarp.org/745289690/fullscreen'
+    , 'Shoot!': 'https://turbowarp.org/748827048/fullscreen'
+    , 'Backrooms': 'https://turbowarp.org/748876549/fullscreen'
 }
 
 def tryFindUrl(choice):
@@ -160,9 +161,7 @@ def run(choice):
                     print('Boblox has blocked this ad or website address: {}'.format(url))
                     
                     del url
-        interceptor = WebEngineUrlInterceptor()
-        QWebEngineProfile.defaultProfile().setUrlRequestInterceptor(interceptor)
-        sleep(0.5)
+        
         class MyWebBrowser(QMainWindow):
             def __init__(self, *args, **kwargs):
                 super(MyWebBrowser, self).__init__(*args, **kwargs)
@@ -195,6 +194,9 @@ def run(choice):
             def navigate(self, url):
                 self.browser.setUrl(QUrl(url))
         turtle.bye()
+
+        interceptor = WebEngineUrlInterceptor()
+        QWebEngineProfile.defaultProfile().setRequestInterceptor(interceptor)
 
         app = QApplication([])
         window = MyWebBrowser()

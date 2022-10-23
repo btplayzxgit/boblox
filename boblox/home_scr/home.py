@@ -1,7 +1,9 @@
 from tkinter import *
 from PIL import Image, ImageTk
-from boblox.gamemgr import get_choices, run
+from boblox.launch_game import launch
 from boblox.game_search_prog import begin_search_gui
+from boblox.gamemgr import get_choices
+from boblox.gamemgr6 import get_choices2
 from boblox.settings_prog import open_settings
 from boblox.chat.choose_conn import choose
 import turtle
@@ -14,7 +16,7 @@ from ast import literal_eval
 def home():
     root = Tk()
     root.title('Boblox')
-    root.iconphoto(False, PhotoImage(file='boblox\\icon.png'))
+    # root.iconphoto(False, PhotoImage(file='boblox\\icon.png'))
     root.geometry('1280x830')
 
     canvas = Canvas(root)
@@ -58,7 +60,7 @@ def home():
     def place_button(btn_x, btn_y, btn): canvas.create_window(btn_x, btn_y, window=btn)
     def destroy(): root.destroy()
 
-    def games(): destroy(); run(pyautogui.confirm(title='Boblox', text='Games\n', buttons=get_choices()))
+    def games(): destroy(); launch(pyautogui.confirm(title='Boblox', text='Games\n', buttons=get_choices()+get_choices2()))
     def game_search(): destroy(); begin_search_gui()
     def settings(): destroy(); open_settings()
     def chat(): destroy(); choose()

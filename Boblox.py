@@ -14,6 +14,7 @@ try:
     while True:
         if internet(): home()
 except ModuleNotFoundError as e:
+    print(e)
     os.system('boblox\\import_error.vbs')
     os.system('pip uninstall PyQt5')
     os.system('pip uninstall PyQtWebEngine')
@@ -25,7 +26,5 @@ except ModuleNotFoundError as e:
     os.system('pip uninstall pyglet')
     os.system('pip uninstall numpy')
     os.system('pip uninstall beautifulsoup4')
-    os.system('pip uninstall vidstream')
     begin_installation()
-    print(e)
 

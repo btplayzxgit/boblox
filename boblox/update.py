@@ -13,8 +13,7 @@ files = ['https://github.com/btplayzxgit/boblox/blob/main/boblox/block',
         'https://github.com/btplayzxgit/boblox/blob/main/boblox/nointernet/source/noise_gen.py',
         'https://github.com/btplayzxgit/boblox/blob/main/boblox/installer/installer.py',
         'https://github.com/btplayzxgit/boblox/blob/main/boblox/home_scr/home.py',
-        'https://github.com/btplayzxgit/boblox/blob/main/boblox/account/account_check.py',
-        'https://github.com/btplayzxgit/boblox/blob/main/boblox/account/username']
+        'https://github.com/btplayzxgit/boblox/blob/main/boblox/account/account_check.py']
 
 def update(url):
     global fail
